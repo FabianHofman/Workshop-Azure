@@ -56,7 +56,9 @@ Open SSMS en maak een connectie naar je lokale SQL-server. Zoek naar de database
 Ga naar https://portal.azure.com/ (en log hier in). Je komt nu uit op een overzicht pagina met bovenin 'Azure-services'. Klik vervolgens op SQL-databases. Je ziet hier de IdentityServer database staan, klik hier op.
 Bovenin aan de rechterkant staat 'Prijscategorie: Basis'. Klik hier op Basis om het plan aan te passen. Klik bovenin op 'Op vCore gebaseerde aanschafopties'. Kies hier voor 'Algemeen gebruik'. Hier komt weer het hoge kostenplaatje te staan als bij de eerste database. Klik vervolgens op 'Serverloos' (de rest van de instellingen mag je ook aanpassen, maar is in principe niet nodig). Klik hierna op 'Toepassen'.
 
-Open vervolgens 'Visual Studio 2019 Preview' met daarin de solution. Klik vervolgens met je rechtermuisknop op de IdentityServer project. Selecteer 'Publish...'. Er wordt nu een nieuw scherm geopend. Klik in dit scherm op 'Start'. In dit nieuwe scherm selecteer je 'App Service' en zorg je er voor dat 'Create New' geselecteerd is. 
+Open vervolgens 'Visual Studio 2019 Preview' met daarin de solution. We moeten hier eerst een aantal dingen aanpassen voordat we kunnen publishen. In de appsettings moeten we de connection string aanpassen naar de Azure SQL database. Deze connection string is te vinden op https://portal.azure.com/. Navigeer hier naar SQL-databases en klik op de aangemaakte IdentityServer database. Rechtsbovenin staat het veld 'Verbindingsreeksen'. Klik hier op 'Databaseverbindingsreeksen tonen'. Hier komt nu de connection string te staan. Kopieër deze en vervang deze in de appsettings. Vergeet niet om je wachtwoord in te vullen van de SQL-server. 
+
+Klik vervolgens met je rechtermuisknop op de IdentityServer project. Selecteer 'Publish...'. Er wordt nu een nieuw scherm geopend. Klik in dit scherm op 'Start'. In dit nieuwe scherm selecteer je 'App Service' en zorg je er voor dat 'Create New' geselecteerd is. 
 
 **Let goed op, vanaf hier gaat het geld kosten!**
 Zorg ervoor dat bij 'Abonnement' staat **Azure for Students**. Als die optie niet aanwezig is, moet je nog even goed kijken of je jou studenten account gekoppeld hebt aan Azure.
@@ -71,9 +73,17 @@ De 'Application Insights' kan gewoon op None blijven staan. Klik vervolgens op '
 
 Klik vervolgens op 'Publish'.
 
+(Sla de URL even op of zorg ervoor dat je die in ieder geval terug kan vinden, die hebben we zo nodig namelijk)
+
 # Web API
 
-Open 'Visual Studio 2019 Preview' met daarin de solution. Klik vervolgens met je rechtermuisknop op de IdentityServer project. Selecteer 'Publish...'. Er wordt nu een nieuw scherm geopend. Klik in dit scherm op 'Start'. In dit nieuwe scherm selecteer je 'App Service' en zorg je er voor dat 'Create New' geselecteerd is. 
+Open 'Visual Studio 2019 Preview' met daarin de solution. We moeten hier eerst een aantal dingen aanpassen voordat we kunnen publishen. In de appsettings moeten we de connection string aanpassen naar de Azure SQL database. Deze connection string is te vinden op https://portal.azure.com/. Navigeer hier naar SQL-databases en klik op de aangemaakte InsideAirBNB database. Rechtsbovenin staat het veld 'Verbindingsreeksen'. Klik hier op 'Databaseverbindingsreeksen tonen'. Hier komt nu de connection string te staan. Kopieër deze en vervang deze in de appsettings. Vergeet niet om je wachtwoord in te vullen van de SQL-server. 
+
+Hierna moeten we nog wat aanpassingen maken in `Startup.cs`. onder `AddJwtBearer` moeten we de Authority aanpassen. Hier moet de link komen die we hierboven gekregen hebben. 
+
+Als laatste moeten we Redis nog koppelen. Ga naar https://portal.azure.com/ en klik onder 'Navigeren' op 'Resourcegroepen'. Klik vervolgens op de resourcegroep die je aangemaakt hebt hierboven. Klik hier op de Azure Cache for Redis. Rechtsbovenin staat het veld 'Sleutels', klik hier op 'Toegangstoetsen weergeven...'. Rechts word een menu geopend met daarin de verbindingsreeks. Kopieër hier de 'Primaire verbindingsreeks (StackExchange.Redis)'. Vervolgens gaan we naar `Startup.cs` en zoeken we daar de verbinding met Redis. Vervang de string hier met de string die we net gekopieerd hebben.
+
+Klik vervolgens met je rechtermuisknop op de IdentityServer project. Selecteer 'Publish...'. Er wordt nu een nieuw scherm geopend. Klik in dit scherm op 'Start'. In dit nieuwe scherm selecteer je 'App Service' en zorg je er voor dat 'Create New' geselecteerd is. 
 
 **Let goed op, vanaf hier gaat het geld kosten!**
 Zorg ervoor dat bij 'Abonnement' staat **Azure for Students**. Als die optie niet aanwezig is, moet je nog even goed kijken of je jou studenten account gekoppeld hebt aan Azure.
