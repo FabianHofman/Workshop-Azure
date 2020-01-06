@@ -90,21 +90,19 @@ Open vervolgens `Visual Studio 2019` met daarin de solution die je gedownload he
 
 Als laatste moeten we Redis nog koppelen. Ga naar https://portal.azure.com/ en zoek naar `Resource groups`. Klik vervolgens op de resource group die je aangemaakt hebt hierboven. Klik hier op de `Azure Cache for Redis` service. Rechtsbovenin staat het veld `keys`. Klik hier op `show access keys...`. Rechts word een menu geopend met daarin de verbindingsreeks. Kopieër de connection string onder `Primary connection string (StackExchange.Redis)`. Vervolgens vervang de string die in `appsettings.json` staat met deze string.
 
+Nu kunnen we de API deployen. Klik met je rechtermuisknop op de `Azure-Workshop project` (Niet de solution). Selecteer `Publish...`. Er wordt nu een nieuw scherm geopend. In dit nieuwe scherm selecteer je `App Service` en selecteer je `Create New`. 
 
-Klik vervolgens met je rechtermuisknop op de IdentityServer project. Selecteer `Publish...`. Er wordt nu een nieuw scherm geopend. Klik in dit scherm op `Start`. In dit nieuwe scherm selecteer je `App Service` en zorg je er voor dat `Create New` geselecteerd is. 
+Log in met je azure account. Je krijgt nu een instellingen scherm te zien. Check dat bij `subscription` **Azure for Students** staat. 
 
+De `name` wordt automatisch voor je ingevuld. Je kan deze aanhouden of veranderen. Vervolgens kies je de aangemaakte `resource group` van de SQL en redis-cache. Bij `Hosting Plan` gaan we een hele nieuwe hosting plan maken. Klik hier op `New...`. Zorg ervoor dat de instellingen er al volgt uit zien:
 
-**Let goed op, vanaf hier gaat het geld kosten!**
-Zorg ervoor dat bij `Abonnement` staat **Azure for Students**. Als die optie niet aanwezig is, moet je nog even goed kijken of je jou studenten account gekoppeld hebt aan Azure.
+- **Hosting Plan**: ingevuld laten zoals die is of zelf een naam geven, dit maakt niet uit.
+- **Location**: West Europe.
+- **Size**: Free.
 
-De naam wordt automatisch voor je ingevuld. Je kan deze aanhouden of veranderen (de keuze is aan jou). Vervolgens zorg je er voor dat je de juiste `Resourcegroep` selecteert. Bij `Hosting Plan` gaan we een hele andere maken. Klik hier op `New...`. Zorg ervoor dat de instellingen er al volgt uit zien:
-- Hosting Plan: ingevuld laten zoals die is of zelf een naam geven, dit maakt niet uit
-- Location: West Europe
-- Size: Free
+![Screenshot azure sql server login](./img/azure-hostingplan.png)
+Hoe je instellingen van je hosting plan ongeveer eruit moeten zien.
 
-Druk vervolgens op `OK`. Zoals je ziet is de Hosting Plan aangepast naar (West Europe, F1).
-De `Application Insights` kan gewoon op None blijven staan. Klik vervolgens op `Create`.
+Druk vervolgens op `OK`. De `Application Insights` kan gewoon op `none` blijven staan. Klik vervolgens op `Create`.  
 
-Klik vervolgens op `Publish`.
-
-(Sla de URL even op of zorg ervoor dat je die in ieder geval terug kan vinden, die hebben we zo nodig namelijk)
+Je komt nu in een overzichts pagina. Kopieer de site url zodat je later de site makkelijk terug kan vinden. Druk vervolgens rechtsboven op `Publish`. De site word nu gedeployd op azure and je kan het gaan gebruiken.
