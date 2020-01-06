@@ -13,12 +13,6 @@ namespace RedisWorkshop.Models
 
         public virtual DbSet<Listings> Listings { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(
-                "Server=localhost;Database=DBFirstDemo; Trusted_Connection=True;");
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Listings>(entity =>
