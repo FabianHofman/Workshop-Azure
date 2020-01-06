@@ -1,21 +1,29 @@
 # Prerequisites
 Om deze demo te volgen is het belangrijk dat je eerst een Azure account gemaakt hebt en de studenten license gekoppeld hebt aan dit account.
 Als je dit nog niet gedaan hebt, maak dan even een account aan op https://azure.microsoft.com/en-us/.
+
+Om 100$ gratis credit te krijgen, koppel je account hier: https://azure.microsoft.com/en-us/free/students/
+
 Zodra dit gedaan is, kan je verder met de rest van de demo!
 
 # Database
-We gaan beginnen met de database.
+Het aanmaken van de database duurt het langste. Gemiddeld duurt 15 tot 30 minuten. 
 
 Ga naar https://portal.azure.com/ (en log hier in). Je komt nu uit op een overzicht pagina met bovenin 'Azure-services'. Klik vervolgens op SQL-databases. 
+
+![Screenshot azure sql server location](/img/azure-db-service.png)
+
 Je komt hierbij op een nieuwe pagina uit met een overzicht van alle SQL-databases (mits je die al hebt gemaakt, anders staat er niks).
-Als je nog geen database gemaakt hebt. Kan je bovenin op 'Toevoegen' klikken. Vervolgens kom je uit op een stappenplan om een SQL-database aan te maken.
+Als je nog geen database gemaakt hebt. Kan je bovenin op 'Toevoegen' of 'Add' klikken. Vervolgens kom je uit op een stappenplan om een SQL-database aan te maken.
 
 **Let goed op, vanaf hier gaat het geld kosten!**
 
-Zorg ervoor dat bij 'Abonnement' staat **Azure for Students**. Als die optie niet aanwezig is, moet je nog even goed kijken of je jou studenten account gekoppeld hebt aan Azure.
+Zorg ervoor dat bij 'Abbonement staat **Azure for Students**. Als die optie niet aanwezig is, moet je nog even goed kijken of je jou studenten account gekoppeld hebt aan Azure.
 
-Hierna maak je een 'Resourcegroep' aan. Dit kan je noemen zoals je zelf wilt.
+Hierna maak je een 'Resourcegroep' aan. Dit kan je noemen zoals je zelf wilt. Een 'Resourcegroep' is een collectie van services die relateerd aan elkaar zijn. 
+
 Vervolgens gaan we de 'Databasenaam' invullen. Hier mag je ook weer invullen wat je wilt.
+
 Vervolgens gaan we een 'Server' aanmaken. Druk onder het select veld op 'Nieuwe aanmaken'. Er zal rechts in het scherm een formulier openen. Volg hierbij de volgende instellingen
 - Servernaam: deze moet uniek zijn, kies dus een naam waarvan jij zeker bent dat die nog niet bestaat.
 - Aanmeldgegevens voor de serverbeheerder: Geef hier een naam naar keuze.
@@ -23,7 +31,17 @@ Vervolgens gaan we een 'Server' aanmaken. Druk onder het select veld op 'Nieuwe 
 - Wachtwoord bevestigen: Zelfde als hierboven is ingetypt.
 - Locatie: (Europa) West-Europa 
 
-Vervolgens gaan we de 'Berekening en opslag instellen'. Klik hier op 'Database configureren'. Je komt hierbij weer in een nieuw scherm uit. Hierin komt het echte kostenplaatje naar voren. Aan de rechterkant zie je de inschatten staan wat de kosten zijn. Om de kosten direct een heel stuk naar beneden te werken klikken we op 'Serverloos'. Zoals je ziet is het kostenplaatje al een heel stuk naar beneden gegaan. Om de server wel een beetje snel te maken gaan we de maximum en minimum aantal vCores aanpassen. Je mag hier zelf aanpassen wat je wil, maar let natuurlijk wel op het kostenplaatje. Zodra dit aangepast is, kan je onderin op 'Toepassen' klikken. Vervolgens klikken we op 'Beoordelen en maken'. Controleer hier nog 1 keer de gegevens en selecteer vervolgens 'Maken'. De database wordt nu aangemaakt en toegevoegd aan een server.
+![Screenshot azure sql server login](/img/azure-db-servername.png)
+
+Je kan 'SQL elastic pool' op nee laten. 
+
+Vervolgens gaan we de 'Berekening en opslag instellen'. Klik hier op 'Database configureren'. Je komt hierbij weer in een nieuw scherm uit. Hierin komt het echte kostenplaatje naar voren. Aan de rechterkant zie je de inschatten staan wat de kosten zijn. 
+
+Voor deze server kiezen we 'Algemeen Gebruik'. Om niet teveel te betalen, gebruiken we een 'Serverloos' server. In plaats per maand, betaal je hier per seconde dat je de database gebruikt. 
+
+Om de database een beetje snel te houden, kan je de minimum en maxium aantal vCores aanpassen. Je mag hier zelf aanpassen wat je wil, maar let natuurlijk wel op het kostenplaatje. De maximale database groote kan je aanpassen bij data max size. Voor nu laten we deze op '2gb' staan. Voor je AirBNB database kan je deze naar 4gb zetten. 
+
+Wanneer alles aangepast is, kan je onderin op 'Toepassen' klikken. Vervolgens klikken we op 'Beoordelen en maken'. Controleer hier nog 1 keer de gegevens en selecteer vervolgens 'Maken'. De database wordt nu aangemaakt en toegevoegd aan een server.
 
 Natuurlijk willen we nog wat data hebben in de database. Om dit te doen kunnen we de 'Microsoft SQL Server Management Studio' (SSMS) openen en verbinden met de server. Hiervoor heb je de volgende gegevens nodig die eerder ingevuld zijn:
 - Servernaam
