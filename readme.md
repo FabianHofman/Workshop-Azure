@@ -77,6 +77,8 @@ Je komt op een nieuw scherm terecht. Hier kan je de samenvoeging van de server v
 
 Om de database een beetje snel te houden, kan je het minimum en maxium aantal vCores aanpassen. Je kan hier zelf aanpassen hoe snel je de database wilt hebben, maar let natuurlijk wel op kosten. Minimaal 1 vCore en maximaal 2 vcores is voldoende voor airBNB aangezien we gebruik maken van caching en minimaal aantal gebruikers hebben. De maximale database groote kan je aanpassen bij data max size. Voor nu zetten we deze op `4gb`.
 
+Je kan de optie `Enable auto-pause` uitvinken. Dit kost je iets meer per maand, maar hierdoor kost het niet 2 minuten om de database op te starten wanneer je deze even niet gebruikt hebt. Dit scheelt tijd bij je assesment van je beroepsproduct. 
+
 Wanneer alles aangepast is, kan je onderin op `apply` klikken. De database subscription wordt omgezet. Dit duurt een kleine minuut. Als je dan de pagina van je AirBNB database refresht, zie je dat de pricing tier aangepast is. 
 
 ![Screenshot azure sql server login](./img/azure-db-system.png)
